@@ -12,7 +12,7 @@ rm JetBrainsMono.zip
 
 ## Step 1 
 ### Install kitty terminal
-[Icons][https://github.com/DinkDonk/kitty-icon]
+[Icons](https://github.com/DinkDonk/kitty-icon)
 ```sh
 sudo apt-get install kitty
 ```
