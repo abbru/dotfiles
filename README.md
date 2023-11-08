@@ -12,7 +12,7 @@ rm JetBrainsMono.zip
 
 ## Step 1 
 ### Install kitty terminal
-
+[Icons](https://github.com/DinkDonk/kitty-icon)
 ```sh
 sudo apt-get install kitty
 ```
@@ -87,6 +87,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ### NeoVim NVchad
 Remember close after install
 [nvchad](https://nvchad.com/docs/quickstart/install)
+[githubCopilot](https://github.com/zbirenbaum/copilot.lua)
 ```sh
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 nvim ./
