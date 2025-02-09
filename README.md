@@ -7,10 +7,10 @@ There are the files I use for kitty terminal with zsh and steps I followed to do
 cd /usr/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
 unzip JetBrainsMono.zip
-rm JetBrainsMono.zip 
+rm JetBrainsMono.zip
 ```
 
-## Step 1 
+## Step 1
 ### Install kitty terminal
 [Icons](https://github.com/DinkDonk/kitty-icon)
 ```sh
@@ -23,7 +23,7 @@ sudo apt-get install kitty
 echo $SHELL
 sudo apt-get install zsh
 usermod --shell /usr/bin/zsh :user:
-sudo su 
+sudo su
 usermod --shell /usr/bin/zsh root
 ```
 
@@ -33,7 +33,7 @@ usermod --shell /usr/bin/zsh root
 cp ./kitty /home/:user:/.config/
 cp .zshrc /home/:user:/
 cp .p10k.zsh /home/:user:/
-sudo su 
+sudo su
 ln -s -f /home/:user:/.zshrc /root/.zshrc
 ```
 
@@ -45,10 +45,10 @@ Pluyings for change colors on commands, autosuggestions and if you touch esc esc
 sudo apt install zsh-syntax-highlighting zsh-autosuggestions
 locate zsh-syntax-highlighting
 locate zsh-autosuggestions
-vim .zshrc //replace value from locate 
+vim .zshrc //replace value from locate
 cd /usr/share/
-sudo su 
-mkdir zsh-sudo 
+sudo su
+mkdir zsh-sudo
 chown user:user zsh-sudo/
 exit
 cd /user/share/zsh-sudo/
@@ -63,7 +63,7 @@ sudo apt-get scrub
 ```sh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-zsh 
+zsh
 yes, yes, yes, 3, 1, 1, 1, 1, 4, 1, 2, 2, 2, yes, yes
 cp .p10k.zsh /home/:user:/
 sudo su
@@ -84,14 +84,4 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ```
 
 ## Step 7
-### NeoVim NVchad
-Remember close after install
-[nvchad](https://nvchad.com/docs/quickstart/install)
-[githubCopilot](https://github.com/zbirenbaum/copilot.lua)
-```sh
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
-nvim ./
-:NvimTreeToggle
-sudo su
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
-```
+### Only copy nvim and install nodejs and npm
