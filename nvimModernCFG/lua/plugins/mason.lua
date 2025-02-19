@@ -18,6 +18,7 @@ return {
 				"sql-formatter",
 				"eslint_d",
 				"flake8",
+				"stylelint",
 				--"luacheck",
 				"phpstan",
 				"jsonlint",

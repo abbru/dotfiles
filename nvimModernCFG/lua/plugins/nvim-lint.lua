@@ -12,6 +12,7 @@ return {
 			python = { "flake8" },
 			rust = { "clippy" },
 			sh = { "shellcheck" },
+			css = { "stylelint" },
 			php = { "phpstan" },
 			json = { "jsonlint" },
 			markdown = { "markdownlint" },

@@ -11,6 +11,7 @@ return {
 				python = { "black" },
 				rust = { "rust_analyzer" },
 				sh = { "shfmt" },
+				css = { "prettier" },
 				--php = { "pint" },
 				json = { "prettier" },
 				markdown = { "prettier" },
