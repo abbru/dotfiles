@@ -16,8 +16,6 @@ keymaps.set("n", "<C-m>", "<C-i>", opts)
 
 -- New tab
 keymaps.set("n", "te", ":tabedit", opts)
-keymaps.set("n", "<tab>", ":BufferLineCycleNext<CR>", opts)
-keymaps.set("n", "<S-tab>", ":BufferLineCyclePrev<CR>", opts)
 
 -- Move Window
 keymaps.set("n", "<c-k>", ":wincmd k<CR>")

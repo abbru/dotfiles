@@ -13,23 +13,9 @@ return {
 				vim.opt_local.relativenumber = true
 			end,
 		},
-		filesystem = {
-			window = {
-				mappings = {
-					["."] = "toggle_hidden",
-					["H"] = "set_root",
-				},
-			},
-		},
-		window = {
-			mappings = {
-				["l"] = "open",
-				["h"] = "close_node",
-			},
-		},
 	},
 	config = function()
-		vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal left<CR>", {})
+		vim.keymap.set("n", "<leader>e", ":Neotree filesystem toggle left<CR>", {})
 		vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
 	end,
 }

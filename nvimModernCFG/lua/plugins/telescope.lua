@@ -13,6 +13,7 @@ return {
 			},
 			"nvim-telescope/telescope-file-browser.nvim",
 		},
+		ft = { "mason" },
 		keys = {
 			{
 				"<leader>fP",
@@ -105,6 +106,9 @@ return {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
 					},
+				},
+				mason = {
+					automatic_installation = true,
 				},
 			})
 			local builtin = require("telescope.builtin")
