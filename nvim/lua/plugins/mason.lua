@@ -20,6 +20,8 @@ return {
       "sqlfluff",
       "beautysh",
       "vint",
+      "yamllint",
+      "intelephense",
     },
   },
   ---@param opts MasonSettings | {ensure_installed: string[]}

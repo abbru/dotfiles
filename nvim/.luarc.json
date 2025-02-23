@@ -1,5 +1,9 @@
 {
     "diagnostics.disable": [
-        "undefined-doc-name"
+        "undefined-doc-name",
+        "undefined-global"
+    ],
+    "diagnostics.globals": [
+        "M"
     ]
 }
