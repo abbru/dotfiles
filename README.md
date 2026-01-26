@@ -1,8 +1,19 @@
-# DotFiles
+# Dotfiles
 
-There are the files I use for kitty terminal with zsh and steps I followed to do it
+This repository contains my personal dotfiles configuration for a customized Linux desktop environment using Hyprland as the window manager, Neovim as the editor, Kitty as the terminal, Zsh as the shell, and Tmux for terminal multiplexing. Optimized for Arch Linux.
 
-#### Fonts NerdFonts JetBrainsMono
+## Prerequisites
+
+Before installing, ensure you have the following:
+
+- Arch Linux with Wayland support
+- Git
+- Basic build tools (gcc, make, etc.)
+
+### Fonts
+
+Install Nerd Fonts JetBrainsMono:
+
 ```sh
 cd /usr/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
@@ -10,78 +21,124 @@ unzip JetBrainsMono.zip
 rm JetBrainsMono.zip
 ```
 
-## Step 1
-### Install kitty terminal
-[Icons](https://github.com/DinkDonk/kitty-icon)
-```sh
-sudo apt-get install kitty
-```
+## Installation
 
-## Step 2
-### Config zsh
-```sh
-echo $SHELL
-sudo apt-get install zsh
-usermod --shell /usr/bin/zsh :user:
-sudo su
-usermod --shell /usr/bin/zsh root
-```
+1. Clone this repository:
 
-## Step 3
-### Copy my dotfiles
-```sh
-cp ./kitty /home/:user:/.config/
-cp .zshrc /home/:user:/
-cp .p10k.zsh /home/:user:/
-sudo su
-ln -s -f /home/:user:/.zshrc /root/.zshrc
-```
+   ```sh
+   git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+   cd ~/dotfiles
+   ```
 
-## Step 4
-### Pluyings Missing
-Pluyings for change colors on commands, autosuggestions and if you touch esc esc put sudo on your line. Replace cat for barcat and ls for lsd (ls, la, ll, lla, l). Remove files from disk rmk file.
+2. Run the installation script (if available) or manually copy/symlink the files.
+
+3. Install required packages for each component.
+
+## Components
+
+### Shell (Zsh)
+
+Zsh with Oh My Zsh, Powerlevel10k theme, syntax highlighting, autosuggestions, and useful aliases.
+
+**Installation:**
 
 ```sh
-sudo apt install zsh-syntax-highlighting zsh-autosuggestions
-locate zsh-syntax-highlighting
-locate zsh-autosuggestions
-vim .zshrc //replace value from locate
-cd /usr/share/
-sudo su
-mkdir zsh-sudo
-chown user:user zsh-sudo/
-exit
-cd /user/share/zsh-sudo/
-wget https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/sudo/sudo.plugin.zsh
-sudo apt-get install lsd bat batcat
-sudo apt-get scrub
-```
-
-## Step 5
-### Powerlevel10k
-[powerlevel10k](https://github.com/romkatv/powerlevel10k)
-```sh
+sudo pacman -S zsh zsh-syntax-highlighting zsh-autosuggestions
+# Install Oh My Zsh (follow their instructions)
+# Install Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-zsh
-yes, yes, yes, 3, 1, 1, 1, 1, 4, 1, 2, 2, 2, yes, yes
-cp .p10k.zsh /home/:user:/
-sudo su
-cd
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-p10k configure
-yes, yes, yes, 3, 1, 1, 1, 1, 4, 1, 2, 2, 2, yes, yes, yes
-cp .p10k.zsh /home/:user:/
-cp .p10k.zsh /root/
+# Configure with p10k configure
 ```
 
-## Step 6
-### fzf
-[fzf](https://github.com/junegunn/fzf)
+**Features:**
+
+- Syntax highlighting for commands
+- Autosuggestions
+- Enhanced aliases (ls -> lsd, cat -> bat)
+- FZF integration for fuzzy finding
+
+**Configuration:** Copy `.zshrc` to `~/.zshrc`
+
+### Terminal (Kitty)
+
+Fast, feature-rich terminal emulator.
+
+**Installation:**
+
 ```sh
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+sudo pacman -S kitty
 ```
 
-## Step 7
-### Only copy nvim and install nodejs and npm
+**Configuration:** Copy `kitty/` to `~/.config/kitty/`
+
+### Window Manager (Hyprland)
+
+Wayland compositor with custom keybindings, window rules, and theming.
+
+**Installation:**
+
+```sh
+sudo pacman -S hyprpaper hyprlock hypridle hyprsunset hyprpicker hyprcursor xdg-desktop-portal-hyprland hyprpolkitagent
+```
+
+**Configuration:** Copy `hypr/` to `~/.config/hypr/`
+
+**Features:**
+
+- Custom keybinds
+- Window and workspace rules
+- Theming and animations
+- Input device configuration
+- Autostart applications
+
+### Editor (Neovim)
+
+Custom Neovim configuration with Lua, lazy.nvim plugin manager, LSP support, and various plugins.
+
+**Installation:**
+
+```sh
+sudo pacman -S neovim nodejs npm
+```
+
+**Configuration:** Copy `nvim/` to `~/.config/nvim/`
+
+**Plugins include:**
+
+- Treesitter for syntax highlighting
+- Telescope for fuzzy finding
+- LSP for language server support
+- Git integration with gitsigns
+- And many more
+
+### Multiplexer (Tmux)
+
+Terminal multiplexer with custom configuration.
+
+**Installation:**
+
+```sh
+sudo pacman -S tmux
+```
+
+**Configuration:** Copy `.tmux.conf` to `~/.tmux.conf`
+
+## Usage
+
+After installation, log out and back in or restart your session to apply changes. Your desktop environment should now use Hyprland with all customizations.
+
+- Use Hyprland keybinds for window management
+- Launch Kitty terminal
+- Use Neovim for editing
+- Tmux for multiplexing terminals
+- Zsh with enhanced features
+
+## Additional Tools
+
+Install additional tools mentioned in the configs:
+
+- lsd (modern ls replacement): `sudo pacman -S lsd`
+- bat (modern cat replacement): `sudo pacman -S bat`
+- fzf (fuzzy finder): `sudo pacman -S fzf`
+- And others as needed
