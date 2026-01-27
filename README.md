@@ -12,13 +12,10 @@ Before installing, ensure you have the following:
 
 ### Fonts
 
-Install Nerd Fonts JetBrainsMono:
+Install Nerd Fonts Cascadia:
 
 ```sh
-cd /usr/share/fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
-unzip JetBrainsMono.zip
-rm JetBrainsMono.zip
+yay -S ttf-cascadia-code-nerd
 ```
 
 ## Installation
@@ -26,8 +23,10 @@ rm JetBrainsMono.zip
 1. Clone this repository:
 
    ```sh
+   sudo pacman -S stow
    git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
    cd ~/dotfiles
+   stow .
    ```
 
 2. Run the installation script (if available) or manually copy/symlink the files.
@@ -44,11 +43,7 @@ Zsh with Oh My Zsh, Powerlevel10k theme, syntax highlighting, autosuggestions, a
 
 ```sh
 sudo pacman -S zsh zsh-syntax-highlighting zsh-autosuggestions
-# Install Oh My Zsh (follow their instructions)
-# Install Powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-# Configure with p10k configure
+yay -S zsh-theme-powerlevel10k-git
 ```
 
 **Features:**
@@ -57,8 +52,6 @@ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 - Autosuggestions
 - Enhanced aliases (ls -> lsd, cat -> bat)
 - FZF integration for fuzzy finding
-
-**Configuration:** Copy `.zshrc` to `~/.zshrc`
 
 ### Terminal (Kitty)
 
