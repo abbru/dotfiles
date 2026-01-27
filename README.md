@@ -29,7 +29,7 @@ yay -S ttf-cascadia-code-nerd
    stow .
    ```
 
-2. Run the installation script (if available) or manually copy/symlink the files.
+2. Run the installation and copy files with stow.
 
 3. Install required packages for each component.
 
@@ -63,8 +63,6 @@ Fast, feature-rich terminal emulator.
 sudo pacman -S kitty
 ```
 
-**Configuration:** Copy `kitty/` to `~/.config/kitty/`
-
 ### Window Manager (Hyprland)
 
 Wayland compositor with custom keybindings, window rules, and theming.
@@ -74,8 +72,6 @@ Wayland compositor with custom keybindings, window rules, and theming.
 ```sh
 sudo pacman -S hyprpaper hyprlock hypridle hyprsunset hyprpicker hyprcursor xdg-desktop-portal-hyprland hyprpolkitagent
 ```
-
-**Configuration:** Copy `hypr/` to `~/.config/hypr/`
 
 **Features:**
 
@@ -95,8 +91,6 @@ Custom Neovim configuration with Lua, lazy.nvim plugin manager, LSP support, and
 sudo pacman -S neovim nodejs npm
 ```
 
-**Configuration:** Copy `nvim/` to `~/.config/nvim/`
-
 **Plugins include:**
 
 - Treesitter for syntax highlighting
@@ -114,8 +108,6 @@ Terminal multiplexer with custom configuration.
 ```sh
 sudo pacman -S tmux
 ```
-
-**Configuration:** Copy `.tmux.conf` to `~/.tmux.conf`
 
 ## Usage
 
