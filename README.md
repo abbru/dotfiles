@@ -15,7 +15,7 @@ Before installing, ensure you have the following:
 Install Nerd Fonts Cascadia:
 
 ```sh
-yay -S ttf-cascadia-code-nerd
+sudo pacman -S ttf-cascadia-code-nerd
 ```
 
 ## Installation
@@ -70,7 +70,7 @@ Wayland compositor with custom keybindings, window rules, and theming.
 **Installation:**
 
 ```sh
-sudo pacman -S hyprpaper hyprlock hypridle hyprsunset hyprpicker hyprcursor xdg-desktop-portal-hyprland hyprpolkitagent
+sudo pacman -S hyprpaper hyprlock hypridle hyprsunset hyprpicker hyprcursor xdg-desktop-portal-hyprland hyprpolkitagent swaync
 ```
 
 **Features:**
@@ -126,4 +126,7 @@ Install additional tools mentioned in the configs:
 - lsd (modern ls replacement): `sudo pacman -S lsd`
 - bat (modern cat replacement): `sudo pacman -S bat`
 - fzf (fuzzy finder): `sudo pacman -S fzf`
+- walker (terminal launcher): `yay -S walker`
+  - Requires [elephant](https://github.com/abenz1267/elephant) backend: `yay -S elephant`
+  - Dependencies: GTK4, gtk4-layer-shell, protobuf, cairo, poppler-glib
 - And others as needed

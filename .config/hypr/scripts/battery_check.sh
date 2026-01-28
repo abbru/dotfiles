@@ -1,17 +1,24 @@
 #!/bin/bash
 
-send_hypr_notify() {
-    hyprctl notify "$1" 5000 "rgb($2)" "$3"
+# Unique ID to prevent notification stacking
+NOTIFY_ID=3000
+
+send_notification() {
+    # $1: Urgency (low, normal, critical)
+    # $2: Title
+    # $3: Message
+    notify-send -r "$NOTIFY_ID" -u "$1" "$2" "$3"
 }
 
 BAT_PATH=$(find /sys/class/power_supply/ -name "BAT*" | head -n 1)
 
-# Initialization
-# We use a variable to detect if we have external power (AC)
-# Some systems use 'Full' when plugged in but at 100%
+if [ -z "$BAT_PATH" ]; then
+    echo "No battery found"
+    exit 1
+fi
+
 get_status() {
-    local status=$(cat "$BAT_PATH/status")
-    echo "$status"
+    cat "$BAT_PATH/status"
 }
 
 LAST_STATUS=$(get_status)
@@ -23,30 +30,29 @@ while true; do
     # --- State Change Logic (Connect/Disconnect) ---
     if [ "$CURRENT_STATUS" != "$LAST_STATUS" ]; then
         
-        # If it changes from something to Charging or Full, it means it was connected
         if [[ "$CURRENT_STATUS" == "Charging" || "$CURRENT_STATUS" == "Full" ]]; then
-            send_hypr_notify 0 "00FFCC" "󱘖 Energy Connected ($CAPACITY%)"
+            send_notification "normal" "Energy Connected" "󱘖 Battery at $CAPACITY%"
         
-        # If it changes from Charging/Full to Discharging, it means it was disconnected
         elif [[ "$CURRENT_STATUS" == "Discharging" ]]; then
-            send_hypr_notify 2 "FFA500" "󰂁 Using Battery ($CAPACITY%)"
+            send_notification "normal" "Using Battery" "󰂁 Disconnected at $CAPACITY%"
         fi
         
         LAST_STATUS="$CURRENT_STATUS"
     fi
 
-    # --- Critical Levels Logic ---
+    # --- Critical Levels Logic (Only when Discharging) ---
     if [ "$CURRENT_STATUS" == "Discharging" ]; then
-        if [ $CAPACITY -le 5 ]; then
-            send_hypr_notify 1 "FF5555" "󰁺 Critical!: $CAPACITY%. Shutting down soon!"
+        if [ "$CAPACITY" -le 5 ]; then
+            # Critical uses 'critical' urgency for RED borders in Mako
+            send_notification "critical" "Critical!" "󰁺 $CAPACITY%. Shutting down soon!"
             sleep 10
             continue
-        elif [ $CAPACITY -le 10 ]; then
-            send_hypr_notify 2 "FF5555" "󰁻 Battery low: $CAPACITY%"
-        elif [ $CAPACITY -le 15 ]; then
-            send_hypr_notify 0 "FFA500" "󰁼 Battery low: $CAPACITY%"
+        elif [ "$CAPACITY" -le 10 ]; then
+            send_notification "normal" "Battery low" "󰁻 Level: $CAPACITY%"
+        elif [ "$CAPACITY" -le 15 ]; then
+            send_notification "low" "Battery low" "󰁼 Level: $CAPACITY%"
         fi
     fi
 
-    sleep 2 # We lower it to 2 seconds for instant response
+    sleep 5
 done

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Unique ID for volume notifications
+NOTIFY_ID=2500
+
 # Get current volume percentage
 VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}')
 
@@ -7,7 +10,9 @@ VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}')
 MUTED=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -o "\[MUTED\]")
 
 if [ "$MUTED" ]; then
-    hyprctl notify 2 1500 "rgb(00FFCC)" "Volumen: Muted"
+    # When muted, we show it clearly without the progress bar
+    notify-send -r "$NOTIFY_ID" -u low -i audio-volume-muted "Volume" "Status: Muted"
 else
-    hyprctl notify 2 1500 "rgb(00FFCC)" "Volumen: $VOLUME%"
+    # When active, we use the 'value' hint to trigger the progress bar in Mako/Dunst
+    notify-send -r "$NOTIFY_ID" -u low -h int:value:"$VOLUME" -h string:category:"volume" "Volume" "Current: $VOLUME%"
 fi
