@@ -20,8 +20,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-
 # Language and Locale
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
