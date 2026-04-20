@@ -90,3 +90,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Created by `pipx` on 2026-03-12 15:21:20
+export PATH="$PATH:/home/barba/.local/bin"
+export PATH="$PATH:/home/barba/go/bin"
