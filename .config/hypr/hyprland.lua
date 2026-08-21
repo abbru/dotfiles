@@ -35,6 +35,8 @@ require("./barba/monitors.lua")
 --   hl.exec_cmd("waybar & hyprpaper & firefox")
 -- end)
 
+require("./barba/autostart.lua")
+
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------

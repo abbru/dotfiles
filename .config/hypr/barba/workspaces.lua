@@ -38,3 +38,13 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+-- Visores de imágenes: flotantes y centrados, para que no partan el tiling.
+hl.window_rule({
+	name = "float-image-viewers",
+	match = { class = "^(imv|swayimg)$" },
+
+	float = true,
+	center = true,
+	size = { "(monitor_w*0.7)", "(monitor_h*0.7)" },
+})

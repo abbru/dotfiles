@@ -16,8 +16,8 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + O", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + U", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(
 	mainMod .. " + F",
 	hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
@@ -29,14 +29,38 @@ hl.bind(
 	{ description = "Toggle Maximize Window" }
 )
 
+-- Bloquear la sesión. Llama a hyprlock directo para no depender de que hypridle
+-- esté corriendo; el pidof evita levantar dos instancias.
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"), { description = "Lock session" })
+
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd('grim -g "$(slurp)" - | swappy -f -'))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
--- Move focus with mainMod + arrow keys
+-- Cuentagotas: copia el hex al portapapeles y avisa por notificación.
+hl.bind(
+	mainMod .. " + SHIFT + C",
+	hl.dsp.exec_cmd("hyprpicker -a -f hex -n"),
+	{ description = "Pick color (hex to clipboard)" }
+)
+
+-- Selector de wallpapers: galería de swayimg sobre ~/Pictures/Wallpapers.
+-- Dentro de imv, Shift+W fija el que estés viendo (ver .config/imv/config).
+hl.bind(
+	mainMod .. " + W",
+	hl.dsp.exec_cmd("swayimg --gallery ~/Pictures/Wallpapers"),
+	{ description = "Wallpaper picker" }
+)
+
+-- Move focus with mainMod + hjk / arrow keys.
+-- SUPER + L pasó a ser el bloqueo, así que "focus right" queda en las flechas.
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+
+hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]

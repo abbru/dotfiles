@@ -94,3 +94,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Created by `pipx` on 2026-03-12 15:21:20
 export PATH="$PATH:/home/barba/.local/bin"
 export PATH="$PATH:/home/barba/go/bin"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/barba/.local/bin:$PATH"

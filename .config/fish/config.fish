@@ -1,4 +1,7 @@
 if status is-interactive
+    # Add ~/.local/bin to PATH
+    set -gx PATH ~/.local/bin $PATH
+
     # Starship custom prompt
     command -v starship &> /dev/null && starship init fish | source
 

@@ -1,0 +1,24 @@
+# ~/.config/imv/config  ->  dotfiles/.config/imv/config
+# Referencia: man 5 imv
+
+[options]
+# hex de 6 dígitos SIN #, o 'checks' para fondo a cuadros
+background = 1a1a1a
+scaling_mode = shrink
+upscaling_method = linear
+recursively = false
+
+overlay = true
+overlay_font = CaskaydiaCove Nerd Font:11
+overlay_text = $imv_current_index/$imv_file_count  ·  $imv_current_file
+overlay_text_color = ebebeb
+overlay_background_color = 1a1a1a
+overlay_background_alpha = cc
+overlay_position_bottom = true
+
+title_text = imv · $imv_current_index/$imv_file_count · $imv_current_file
+
+[binds]
+# W = fijar la imagen actual como wallpaper (la aplica y la persiste en
+# hyprpaper.conf, así sobrevive al reinicio de hyprpaper).
+<Shift+w> = exec ~/.config/hypr/scripts/set-wallpaper.sh "$imv_current_file"
